@@ -3,6 +3,11 @@ import fastify from 'fastify'
 const app = fastify()
 const port = 3000
 
+app.get('/hello', (req, res) => {
+  const name = req.query.name || 'World'
+  res.send(`Hello, ${name}!`)
+})
+
 app.get('/users', (req, res) => {
   res.send('GET /users')
 })
