@@ -1,7 +1,15 @@
 import fastify from 'fastify'
+import view from '@fastify/view'
+import pug from 'pug'
 
 const app = fastify()
 const port = 3000
+
+await app.register(view, { engine: { pug } })
+
+app.get('/', (req, res) => {
+  res.view('src/views/home')
+})
 
 app.get('/users', (req, res) => {
   res.send('GET /users')
